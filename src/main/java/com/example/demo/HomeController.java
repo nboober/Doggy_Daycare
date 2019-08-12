@@ -21,6 +21,9 @@ public class HomeController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    DogRepository dogRepository;
+
     //Home
     @RequestMapping("/")
     public String index(Model model){
@@ -30,6 +33,28 @@ public class HomeController {
             model.addAttribute("user", userService.getUser());
         }
         return "index";
+    }
+
+    @GetMapping("/add")
+    public String addDog(Model model){
+
+        model.addAttribute("dog", new Dog());
+
+        return "addDog";
+    }
+
+    @PostMapping("/processDog")
+    public String processDog(@Valid Dog dog, BindingResult result, @ModelAttribute User user){
+        if(result.hasErrors()){
+            return "addDog";
+        }
+
+//        userService.getUser().setDogs(dog);
+        userService.saveUser(user);
+
+        dog.setOwner(userService.getUser());
+        dogRepository.save(dog);
+        return "redirect:/";
     }
 
     @RequestMapping("/update/{id}")

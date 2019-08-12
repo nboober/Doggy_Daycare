@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+<head th:replace="base :: head"></head>
+<body>
+<nav th:replace="base :: navbar"></nav>
+
+<div class="container">
+
+    <form th:action="@{/processDog}" th:object="${dog}" method="post">
+        <input type="hidden" th:field="*{id}"/>
+
+        Name:
+        <input type="text" th:field="*{name}"/>
+        <p th:errors="*{name}" th:if="${#fields.hasErrors('name')}" th:inline="text">Please type in a name.</p><br/>
+
+        Breed:
+        <input type="text" th:field="*{breed}"/>
+        <p th:errors="*{breed}" th:if="${#fields.hasErrors('breed')}" th:inline="text">Please type in a breed.</p><br/>
+
+        Age:
+        <input type="text" th:field="*{age}"/>
+        <p th:errors="*{age}" th:if="${#fields.hasErrors('age')}" th:inline="text">Please type in an age.</p><br/>
+
+
+        Temperament:
+        <select id="temperament" name="temperament" th:field="*{temperament}">
+            <option value="Playful">Playful</option>
+            <option value="Aggressive">Aggressive </option>
+            <option value="Shy">Shy</option>
+        </select>
+        <p th:errors="*{temperament}" th:if="${#fields.hasErrors('temperament')}" th:inline="text">Please choose a temperament.</p><br/>
+
+        <input type="submit" value="Submit"/>
+
+    </form>
+
+</div>
+
+<div th:replace="base :: javascript"></div>
+</body>
+</html>

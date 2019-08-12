@@ -4,28 +4,47 @@
 <head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Title</title>
+    <title>DoggyLife</title>
     <!--Bootstrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!--My Css-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!-- Image and text Nav Bar-->
-<nav class="navbar navbar-dark bg-dark" th:fragment="navbar">
+<nav class="navbar fancy-font" th:fragment="navbar">
     <a class="navbar-brand" href="/">
-        <img src="#" width="auto" height="50" class="d-inline-block align-top" alt="image">
-        <span class="fancy-writing">Nav Title</span>
+        <img src="https://res.cloudinary.com/dmfaehjot/image/upload/v1565629734/DoggyDaycare/lead_720_405_hi5lwd.jpg" width="auto" height="80" class="d-inline-block align-top" alt="Pug Image">
+        <span class="fancy-writing ">DoggLife</span>
     </a>
-    <!--If the user is logged in this link will be visible-->
-    <a sec:authorize="isAuthenticated()" href="#">Ur Logged In</a>
 
-    <!--The user needs a certain role to see this link (USER)-->
-    <a sec:authorize="hasAuthority('USER')" href="#">USER Eyes Only</a>
-    <a sec:authorize="hasAuthority('ADMIN')" href="/admin">ADMIN Eyes Only</a>
-    <a href="#">Link</a>
-    <a sec:authorize="!isAuthenticated()" href="/Login">Login</a>
+<!--    Dropdown Button-->
+    <div class="pos-f-t">
+
+        <div class="collapse" id="navbarToggleExternalContent">
+            <div class="bg-default p-4">
+                <!--If the user is logged in this link will be visible-->
+                <a sec:authorize="isAuthenticated()" href="/add">Register a Dog</a><br/>
+
+                <!--The user needs a certain role to see this link (USER)-->
+                <!--    <a sec:authorize="hasAuthority('USER')" href="#">USER Eyes Only</a>-->
+                <a sec:authorize="hasAuthority('ADMIN')" href="/admin">ADMIN Eyes Only</a><br/>
+                <!--    <a href="#">Link</a>-->
+                <a sec:authorize="!isAuthenticated()" href="/Login">Login</a>
+
+                <a sec:authorize="isAuthenticated()" href="/userProfile">View Profile</a><br/>
+
+
+            </div>
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 </nav>
 <!--End of Nav Bar-->
 

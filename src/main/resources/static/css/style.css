@@ -1,3 +1,50 @@
 body{
-    background-color: lightskyblue;
+    background-color: wheat;
+}
+
+.fancy-font{
+    font-family: 'Indie Flower', cursive;
+}
+
+.center-content{
+    margin: 0 auto;
+}
+
+.center-text{
+    text-align: center;
+}
+
+.container{
+    width: 100%;
+}
+
+a{
+    color: black;
+    font-size: 2vw;
+}
+
+a:hover{
+    text-decoration: none;
+    color: black;
+}
+
+a:visited{
+    color: black;
+}
+
+.navbar{
+    background-color: saddlebrown;
+}
+
+.navbar-brand{
+    font-size: 2.5vw;
+}
+
+.navbar-toggler{
+    background-color: black;
+    float: right;
+}
+
+.p-4{
+    float: right;
 }

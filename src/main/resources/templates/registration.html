@@ -39,6 +39,17 @@
     </mark>
     <input type="text" id="email" placeholder="Email" th:field="*{email}"/><br/>
 
+    Phone
+    <mark>
+        <strong>
+                <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">
+                    Phone Number Error
+                </span>
+        </strong>
+    </mark>
+    <input type="text" id="phone" placeholder="(xxx)xxx-xxxx" th:field="*{phone}"/><br/>
+
+
     Username
     <mark>
         <strong>

@@ -5,35 +5,34 @@
 <body>
 <nav th:replace="base :: navbar"></nav>
 
-    <p th:text="${message}"></p>
-
-    <p sec:authorize="isAuthenticated()">
+<div class="container">
+    <h2 class="center-text" sec:authorize="isAuthenticated()">
         Welcome <span th:text="${#authentication.name}"></span> <!--only show when authenticated-->
-    </p>
+    </h2>
 
-    <p>
-        Welcome <span sec:authentication="name"></span> <!--shows name regardless of anonymity-->
-    </p>
+    <h2 class="center-text" sec:authorize="!isAuthenticated()">
+        Welcome to DoggyLife!
+    </h2>
 
-    <h2>Insecure Page</h2>
-    <a href="/userProfile">View Profile</a>
 
     <!--If the Id of the current user matches the id of the linked
     object in user then it will show. Otherwise it wont -->
-<!--    <table>-->
-<!--        <tr th:each="course : ${courses}">-->
-<!--            <td th:text="${#}"></td>-->
-<!--            <td th:text="${#}"></td>-->
-<!--            <td th:text="${#}"></td>-->
-<!--            <td>-->
-<!--                    <span th:if="${user.getId() == course.user.id}">-->
-<!--                        <a th:href="@{/update/{id}(id=${course.id})}">Update</a>-->
-<!--                        <a th:href="@{/delete/{id}(id=${course.id})}">Delete</a>-->
-<!--                    </span>-->
-<!--                <a th:href="@{/detail/{id}(id=${course.id})}">Details</a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--    </table>-->
+    <!--    <table>-->
+    <!--        <tr th:each="course : ${courses}">-->
+    <!--            <td th:text="${#}"></td>-->
+    <!--            <td th:text="${#}"></td>-->
+    <!--            <td th:text="${#}"></td>-->
+    <!--            <td>-->
+    <!--                    <span th:if="${user.getId() == course.user.id}">-->
+    <!--                        <a th:href="@{/update/{id}(id=${course.id})}">Update</a>-->
+    <!--                        <a th:href="@{/delete/{id}(id=${course.id})}">Delete</a>-->
+    <!--                    </span>-->
+    <!--                <a th:href="@{/detail/{id}(id=${course.id})}">Details</a>-->
+    <!--            </td>-->
+    <!--        </tr>-->
+    <!--    </table>-->
+</div>
+
 <div th:replace="base :: javascript"></div>
 </body>
 </html>
